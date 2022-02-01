@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FoodList from './screens/FoodList';
+import FoodDetails from './screens/FoodDetails';
+import Login from './screens/Login'
+import SignUp from './screens/SignUp'
+import GetStarted from './screens/GetStarted';
+import FoodListv2 from './screens/FoodListv2';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='GetStarted'>
+        <Stack.Screen name='GetStarted'
+          component={GetStarted}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name='SignUp'
+          component={SignUp}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name='Login'
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name='FoodList'
+          component={FoodListv2}
+          options={{ title: 'Food List' }}
+        />
+        <Stack.Screen name='FoodDetails'
+          component={FoodDetails} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
