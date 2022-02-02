@@ -6,6 +6,8 @@ import Login from './screens/Login'
 import SignUp from './screens/SignUp'
 import GetStarted from './screens/GetStarted';
 import FoodListv2 from './screens/FoodListv2';
+import OtherInfo from './screens/OtherInfo'
+import Test from './screens/Test';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,8 +27,16 @@ export default function App() {
           component={Login}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name='OtherInfo'
+          component={OtherInfo}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name='FoodList'
           component={FoodListv2}
+          options={{ title: 'Food List' }}
+        />
+        <Stack.Screen name='Test'
+          component={Test}
           options={{ title: 'Food List' }}
         />
         <Stack.Screen name='FoodDetails'

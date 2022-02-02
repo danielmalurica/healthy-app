@@ -85,90 +85,93 @@ const Login = ({ navigation }) => {
       </View>
       <Animatable.View animation='fadeInUpBig' style={styles.footer}>
         <Animatable.View animation='zoomInUp'>
-          <Text style={styles.textFooter}>Email</Text>
-          <View style={styles.emailAndPasswordInput}>
-            <FontAwesome
-              name="user-o"
-              color='#009387'
-              size={20}
-            />
-            <TextInput
-              placeholder='Enter Your Email'
-              style={styles.textInput}
-              autoCapitalize='none'
-              onChangeText={(value) => handleEmail(value)}
-              value={data.email}
-            />
-            {data.checkInputEmail ?
-              <Animatable.View animation='bounceIn'>
-                <Feather
-                  name='check-circle'
-                  color='green'
-                  size={20}
-                />
-              </Animatable.View>
-              :
-              null
-            }
-          </View>
-          {data.isValidEmail ? null
-            :
-            <Animatable.View animation='shake'>
-              <Text style={styles.warningText}>Invalid Email!</Text>
-            </Animatable.View>
-          }
-
-          <Text style={styles.textFooter}>Password</Text>
-          <View style={styles.emailAndPasswordInput}>
-            <FontAwesome
-              name="lock"
-              color='#009387'
-              size={20}
-            />
-            <TextInput
-              placeholder='Enter Your Password'
-              style={styles.textInput}
-              autoCapitalize='none'
-              secureTextEntry={data.secureTextEntry ? true : false}
-              onChangeText={(value) => handlePasswordChange(value)}
-            />
-            {data.isValidPassword ?
-              <Animatable.View animation='bounceIn'>
-                <Feather
-                  name='check-circle'
-                  color='green'
-                  size={20}
-                />
-              </Animatable.View>
-              : null}
-
-            <TouchableOpacity onPress={updateSecureTextEntry}>
-              {data.secureTextEntry ?
-                <Feather
-                  name='eye-off'
-                  color='green'
-                  size={20}
-                />
+          <ScrollView>
+            <Text style={styles.textFooter}>Email</Text>
+            <View style={styles.emailAndPasswordInput}>
+              <FontAwesome
+                name="user-o"
+                color='#009387'
+                size={20}
+              />
+              <TextInput
+                placeholder='Enter Your Email'
+                style={styles.textInput}
+                autoCapitalize='none'
+                onChangeText={(value) => handleEmail(value)}
+                value={data.email}
+              />
+              {data.checkInputEmail ?
+                <Animatable.View animation='bounceIn'>
+                  <Feather
+                    name='check-circle'
+                    color='green'
+                    size={20}
+                  />
+                </Animatable.View>
                 :
-                <Feather
-                  name='eye'
-                  color='green'
-                  size={20}
-                />
+                null
               }
-            </TouchableOpacity>
-          </View>
-          {data.isValidPassword ? null
-            :
-            <Animatable.View animation='shake'>
-              <Text style={styles.warningText}>Password must be 6 characters long!</Text>
-            </Animatable.View>
-          }
+            </View>
+            {data.isValidEmail ? null
+              :
+              <Animatable.View animation='shake'>
+                <Text style={styles.warningText}>Invalid Email!</Text>
+              </Animatable.View>
+            }
 
-          <View style={styles.loginButton}>
-            <RoundedButton title='Login' onPress={handleSignIn} />
-            <RoundedButton title='Sign Up' onPress={() => navigation.navigate('SignUp')} />
-          </View>
+            <Text style={styles.textFooter}>Password</Text>
+            <View style={styles.emailAndPasswordInput}>
+              <FontAwesome
+                name="lock"
+                color='#009387'
+                size={20}
+              />
+              <TextInput
+                placeholder='Enter Your Password'
+                style={styles.textInput}
+                autoCapitalize='none'
+                secureTextEntry={data.secureTextEntry ? true : false}
+                onChangeText={(value) => handlePasswordChange(value)}
+              />
+              {data.isValidPassword ?
+                <Animatable.View animation='bounceIn'>
+                  <Feather
+                    name='check-circle'
+                    color='green'
+                    size={20}
+                  />
+                </Animatable.View>
+                : null}
+
+              <TouchableOpacity onPress={updateSecureTextEntry}>
+                {data.secureTextEntry ?
+                  <Feather
+                    name='eye-off'
+                    color='green'
+                    size={20}
+                  />
+                  :
+                  <Feather
+                    name='eye'
+                    color='green'
+                    size={20}
+                  />
+                }
+              </TouchableOpacity>
+            </View>
+            {data.isValidPassword ? null
+              :
+              <Animatable.View animation='shake'>
+                <Text style={styles.warningText}>Password must be 6 characters long!</Text>
+              </Animatable.View>
+            }
+
+            <View style={styles.loginButton}>
+              <RoundedButton title='Login' onPress={handleSignIn} />
+              <RoundedButton title='Sign Up' onPress={() => navigation.navigate('SignUp')} />
+              <RoundedButton title='Test' onPress={() => navigation.navigate('Test')} />
+            </View>
+          </ScrollView>
         </Animatable.View>
       </Animatable.View>
 
